@@ -1,5 +1,6 @@
 import { Bar } from "react-chartjs-2";
 import "./App.css";
+import { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -25,18 +26,30 @@ const salesData = {
 };
 
 const App = () => {
-  const labels = salesData.oranges.months;
-  const data = salesData.oranges.data;
+  const [fruit, setFruit] = useState("oranges");
+
+  const [data, setData] = useState(salesData[fruit]);
+
+  const handleFruitChange = (event) => {
+    setFruit(event.target.value);
+    setData(salesData[event.target.value]);
+  };
 
   return (
-    <div>
+    <div className="chart">
+      <h1>Sales Data - {fruit}</h1>
+      <select value={fruit} onChange={handleFruitChange}>
+        <option value="oranges">Oranges</option>
+        <option value="lemons">Lemons</option>
+        <option value="melons">Melons</option>
+      </select>
       <Bar
         data={{
-          labels: labels,
+          labels: data["months"],
           datasets: [
             {
               label: "Sales",
-              data: data,
+              data: data["data"],
               borderWidth: 2,
             },
           ],
