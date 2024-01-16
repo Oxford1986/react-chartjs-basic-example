@@ -9,18 +9,41 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
+const salesData = {
+  oranges: {
+    months: ["January", "February", "March", "April"],
+    data: [4, 6, 7, 2],
+  },
+  lemons: {
+    months: ["January", "February", "March", "April", "May", "June"],
+    data: [6, 5, 4, 3, 2, 1],
+  },
+  melons: {
+    months: ["January", "February", "March", "April", "May", "June"],
+    data: [1, 5, 4, 2, 6, 1],
+  },
+};
+
 const App = () => {
-  const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [
-      {
-        label: "Sales",
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1,
-      },
-    ],
-  };
-  return <Bar data={data} />;
+  const labels = salesData.oranges.months;
+  const data = salesData.oranges.data;
+
+  return (
+    <div>
+      <Bar
+        data={{
+          labels: labels,
+          datasets: [
+            {
+              label: "Sales",
+              data: data,
+              borderWidth: 2,
+            },
+          ],
+        }}
+      />
+    </div>
+  );
 };
 
 export default App;
