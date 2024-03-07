@@ -10,29 +10,28 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
+const labels = ["January", "February", "March", "April", "May", "June"];
+
 const salesData = {
   oranges: {
-    months: ["January", "February", "March", "April"],
-    data: [4, 6, 7, 2],
+    data: [4, 6, 7, 2, 6, 5],
+    backgroundColor: "orange",
   },
   lemons: {
-    months: ["January", "February", "March", "April", "May", "June"],
     data: [6, 5, 4, 3, 2, 1],
+    backgroundColor: "yellow",
   },
   melons: {
-    months: ["January", "February", "March", "April", "May", "June"],
     data: [1, 5, 4, 2, 6, 1],
+    backgroundColor: "green",
   },
 };
 
 const App = () => {
   const [fruit, setFruit] = useState("oranges");
 
-  const [data, setData] = useState(salesData[fruit]);
-
   const handleFruitChange = (event) => {
     setFruit(event.target.value);
-    setData(salesData[event.target.value]);
   };
 
   return (
@@ -45,14 +44,8 @@ const App = () => {
       </select>
       <Bar
         data={{
-          labels: data["months"],
-          datasets: [
-            {
-              label: "Sales",
-              data: data["data"],
-              borderWidth: 2,
-            },
-          ],
+          labels: labels,
+          datasets: [salesData[fruit]],
         }}
       />
     </div>
