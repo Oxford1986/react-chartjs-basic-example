@@ -1,0 +1,17 @@
+[
+  {
+    "fruit": "oranges",
+    "backgroundColor": "orange",
+    "sales": [7, 3, 4, 2, 5, 0]
+  },
+  {
+    "fruit": "lemons",
+    "backgroundColor": "yellow",
+    "sales": [7, 3, 4, 2, 5, 0]
+  },
+  {
+    "fruit": "apples",
+    "backgroundColor": "green",
+    "sales": [7, 3, 4, 2, 5, 0]
+  }
+]
