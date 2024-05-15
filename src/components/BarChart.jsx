@@ -30,20 +30,22 @@ const BarChart = () => {
     fetchData();
   }, []);
 
+  // event listener for the dropdown menu
   const handleFruitChange = (event) => {
     setFruit(event.target.value);
   };
 
-  function printValues(jsondata, selection) {
+  // get the sales data from JSON file for the selected fruit
+  function getValues(jsondata, selection) {
     for (let k in jsondata) {
       if (jsondata[k].fruit == selection) {
-        return [jsondata[k].backgroundColor, jsondata[k].sales];
+        return [jsondata[k].sales, jsondata[k].backgroundColor];
       }
     }
   }
 
   if (data) {
-    const [x, y] = printValues(data, fruit);
+    const [salesData, bgColor] = getValues(data, fruit);
 
     return (
       <div className="chart">
@@ -56,7 +58,7 @@ const BarChart = () => {
         <Bar
           data={{
             labels: months,
-            datasets: [{ data: y, backgroundColor: x }],
+            datasets: [{ data: salesData, backgroundColor: bgColor }],
           }}
         />
       </div>

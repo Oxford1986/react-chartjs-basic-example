@@ -7,11 +7,11 @@
   {
     "fruit": "lemons",
     "backgroundColor": "yellow",
-    "sales": [7, 3, 4, 2, 5, 0]
+    "sales": [4, 3, 6, 2, 5, 9]
   },
   {
     "fruit": "apples",
     "backgroundColor": "green",
-    "sales": [7, 3, 4, 2, 5, 0]
+    "sales": [1, 2, 3, 4, 5, 6]
   }
 ]
